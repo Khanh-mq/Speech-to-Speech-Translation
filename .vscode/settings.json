@@ -1,0 +1,10 @@
+{
+    "python-envs.defaultEnvManager": "ms-python.python:conda",
+    "python-envs.defaultPackageManager": "ms-python.python:conda",
+    "python-envs.pythonProjects": [],
+    "python.analysis.extraPaths": [
+        "./src/Module3_Unit2Wav",
+        "./src/Module3_Unit2Wav",
+        "./fairseq"
+    ]
+}

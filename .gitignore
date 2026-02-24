@@ -1,0 +1,14 @@
+ai310_env/
+fairseq/
+final/
+checkpoints/vocoder_target/
+checkpoints/vocoder_source/
+speech-resynthesis/
+temp_pipeline_s2u/
+test_output_results/
+__pycache__/
+*.pt
+*.ckpt
+.env
+*.wav
+
