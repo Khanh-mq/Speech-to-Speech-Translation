@@ -6,7 +6,7 @@ BASE_DIR = "/mnt/e/AI/khanh"
 FAIRSEQ_DIR = os.path.join(BASE_DIR, "fairseq")
  
 # Đường dẫn thư mục checkpoint
-BASE_SOURCE_HIFI_GAN_TARGET = os.path.join(BASE_DIR, 'checkpoints/vocoder_target') # Model tiếng Việt (Custom)
+BASE_SOURCE_HIFI_GAN_TARGET = os.path.join(BASE_DIR, 'checkpoints/vocoder_target_kmean500') # Model tiếng Việt (Custom)
 BASE_TARGET_HIFI_GAN_SOURCE = os.path.join(BASE_DIR, 'checkpoints/vocoder_source') # Model tiếng Anh (Fairseq)
 
 def infer(mode):
@@ -19,7 +19,7 @@ def infer(mode):
         output_file = os.path.join(BASE_DIR, 'final/unit2wav/target/predicted_wav/result_vn.wav') # Thêm tên file .wav
         
         # Checkpoint (Custom)
-        hifi_gan_ckpt = os.path.join(BASE_SOURCE_HIFI_GAN_TARGET, "g_00027000")
+        hifi_gan_ckpt = os.path.join(BASE_SOURCE_HIFI_GAN_TARGET, "g_00090000")
         config_file = os.path.join(BASE_SOURCE_HIFI_GAN_TARGET, "config.json")
 
         

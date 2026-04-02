@@ -6,6 +6,9 @@ import joblib
 import glob
 import subprocess
 from tqdm import tqdm
+import time 
+import shutil
+
 
 # --- 1. FIX LỖI IMPORT FAIRSEQ ---
 FAIRSEQ_PATH = "/mnt/e/AI/khanh/fairseq"
@@ -27,7 +30,7 @@ torch.backends.cuda.sdp_kernel(enable_flash=False, enable_math=True, enable_mem_
 # --- CẤU HÌNH ---
 BASE_DIR = '/mnt/e/AI/khanh'
 BASE_DIR_DATA = "/mnt/g/data_final/data/source"
-
+BASE_DIR_DATA_SOURCE =  "mnt/g/data_final/data/target"
 # Models
 HUBERT_CKPT = os.path.join(BASE_DIR, "checkpoints/mhubert_base_vp_en_es_fr_it3.pt")
 KM_MODEL_SOURCE = os.path.join(BASE_DIR, "checkpoints/mhubert_base_vp_en_es_fr_it3_L11_km1000.bin")
@@ -38,6 +41,7 @@ VOCODER_CONFIG = os.path.join(BASE_DIR, 'checkpoints/vocoder_target/config.json'
 
 # Output
 TEST_INPUT_DIR = os.path.join(BASE_DIR_DATA, "test") 
+TEST_INPUT_DIR_TARGET = os.path.join(BASE_DIR_DATA_SOURCE, "test") 
 TEST_OUTPUT_DIR = os.path.join(BASE_DIR, "test_output_results") 
 
 # --- CLASS 1: HUBERT (Giữ nguyên vì đã chạy tốt) ---
@@ -70,66 +74,66 @@ class FastUnitExtractor:
         units = dist.argmin(dim=-1).squeeze(0).cpu().numpy()
         return " ".join(map(str, units))
 
-# --- CLASS 2: TRANSLATOR (THAY THẾ SUBPROCESS FAIRSEQ) ---
-class FastTranslator:
-    def __init__(self, model_path, data_bin):
-        print(">>> [2/3] Loading Translation Model...")
-        # Load model thủ công thay vì gọi lệnh shell
-        self.models, self.cfg, self.task = load_model_ensemble_and_task(
-            [model_path], 
-            arg_overrides={'data': data_bin, 'source_lang': 'src', 'target_lang': 'tgt'}
-        )
+# # --- CLASS 2: TRANSLATOR (THAY THẾ SUBPROCESS FAIRSEQ) ---
+# class FastTranslator:
+#     def __init__(self, model_path, data_bin):
+#         print(">>> [2/3] Loading Translation Model...")
+#         # Load model thủ công thay vì gọi lệnh shell
+#         self.models, self.cfg, self.task = load_model_ensemble_and_task(
+#             [model_path], 
+#             arg_overrides={'data': data_bin, 'source_lang': 'src', 'target_lang': 'tgt'}
+#         )
 
-        self.model = self.models[0].cuda().eval()
-        self.generator = self.task.build_generator(self.models, self.cfg.generation)
-        self.src_dict = self.task.source_dictionary
-        self.tgt_dict = self.task.target_dictionary
+#         self.model = self.models[0].cuda().eval()
+#         self.generator = self.task.build_generator(self.models, self.cfg.generation)
+#         self.src_dict = self.task.source_dictionary
+#         self.tgt_dict = self.task.target_dictionary
 
-    # def translate_batch(self, unit_strings, beam=5):
-    #     # 1. Convert text units -> tensor ids
-    #     tokens_list = [
-    #         self.src_dict.encode_line(u, add_if_not_exist=False).long() 
-    #         for u in unit_strings
-    #     ]
+#     # def translate_batch(self, unit_strings, beam=5):
+#     #     # 1. Convert text units -> tensor ids
+#     #     tokens_list = [
+#     #         self.src_dict.encode_line(u, add_if_not_exist=False).long() 
+#     #         for u in unit_strings
+#     #     ]
         
-    #     # 2. Batching (Collating)
-    #     lengths = torch.LongTensor([t.numel() for t in tokens_list])
-    #     # Pad inputs
-    #     max_len = lengths.max().item()
-    #     # Cắt nếu quá dài để tránh OOM (tương tự max-source-positions)
-    #     if max_len > 4000: max_len = 4000
+#     #     # 2. Batching (Collating)
+#     #     lengths = torch.LongTensor([t.numel() for t in tokens_list])
+#     #     # Pad inputs
+#     #     max_len = lengths.max().item()
+#     #     # Cắt nếu quá dài để tránh OOM (tương tự max-source-positions)
+#     #     if max_len > 4000: max_len = 4000
             
-    #     src_tokens = torch.full((len(tokens_list), max_len), self.src_dict.pad(), dtype=torch.long)
-    #     for i, t in enumerate(tokens_list):
-    #         l = min(t.numel(), 4000)
-    #         src_tokens[i, :l] = t[:l]
+#     #     src_tokens = torch.full((len(tokens_list), max_len), self.src_dict.pad(), dtype=torch.long)
+#     #     for i, t in enumerate(tokens_list):
+#     #         l = min(t.numel(), 4000)
+#     #         src_tokens[i, :l] = t[:l]
             
-    #     src_tokens = src_tokens.cuda()
-    #     src_lengths = lengths.cuda().clamp(max=4000)
+#     #     src_tokens = src_tokens.cuda()
+#     #     src_lengths = lengths.cuda().clamp(max=4000)
 
-    #     # 3. Generate Input Dict for Fairseq
-    #     sample = {
-    #         'net_input': {
-    #             'src_tokens': src_tokens,
-    #             'src_lengths': src_lengths,
-    #         }
-    #     }
+#     #     # 3. Generate Input Dict for Fairseq
+#     #     sample = {
+#     #         'net_input': {
+#     #             'src_tokens': src_tokens,
+#     #             'src_lengths': src_lengths,
+#     #         }
+#     #     }
 
-    #     # 4. Run Inference (TRỰC TIẾP TRONG PYTHON - FIX ĐƯỢC LỖI MASK)
-    #     with torch.no_grad():
-    #         translations = self.generator.generate(self.models, sample, prefix_tokens=None)
+#     #     # 4. Run Inference (TRỰC TIẾP TRONG PYTHON - FIX ĐƯỢC LỖI MASK)
+#     #     with torch.no_grad():
+#     #         translations = self.generator.generate(self.models, sample, prefix_tokens=None)
 
-    #     # 5. Decode outputs
-    #     results = []
-    #     for hypos in translations:
-    #         # Lấy giả thuyết tốt nhất (hypos[0])
-    #         best_hypo = hypos[0] 
-    #         # Chuyển tensor ids -> unit string
-    #         out_str = self.tgt_dict.string(best_hypo['tokens'])
-    #         # Loại bỏ các token đặc biệt nếu có
-    #         results.append(out_str)
+#     #     # 5. Decode outputs
+#     #     results = []
+#     #     for hypos in translations:
+#     #         # Lấy giả thuyết tốt nhất (hypos[0])
+#     #         best_hypo = hypos[0] 
+#     #         # Chuyển tensor ids -> unit string
+#     #         out_str = self.tgt_dict.string(best_hypo['tokens'])
+#     #         # Loại bỏ các token đặc biệt nếu có
+#     #         results.append(out_str)
             
-    #     return results
+#     #     return results
 
 # --- CLASS 2: TRANSLATOR (ĐÃ SỬA LỖI ĐỘ DÀI OUTPUT) ---
 class FastTranslator:
@@ -202,10 +206,19 @@ class FastTranslator:
 def run_fast_pipeline(limit=200):
     if not os.path.exists(TEST_OUTPUT_DIR): os.makedirs(TEST_OUTPUT_DIR)
 
+    #  thuwcj hiện copy số file vào bên trong  uest putput_dỉr để dể kiểm tra 
+
     # 1. EXTRACT
     extractor = FastUnitExtractor(HUBERT_CKPT, KM_MODEL_SOURCE)
     wav_files = sorted(glob.glob(os.path.join(TEST_INPUT_DIR, "*.wav")))[:limit]
     
+    wav_files_source = sorted(glob.glob(os.path.join(TEST_INPUT_DIR_TARGET, "*.wav")))[:limit]
+    print(f">>> Copy {len(wav_files_source)} file test sang thư mục output...")
+    for wav_path in wav_files_source:
+        filename = os.path.basename(wav_path)
+        dest_path = os.path.join(TEST_OUTPUT_DIR, filename)
+        shutil.copy2(wav_path, dest_path)
+
     # Lọc file, lưu index để map lại sau
     batch_data = [] # List tuple (index, original_path, source_unit_str)
     

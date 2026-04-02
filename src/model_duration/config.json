@@ -1,0 +1,36 @@
+{
+    "train_manifest": "/mnt/e/AI/khanh/src/Unit2Wav/processed_data/target/train.manifest",
+    "valid_manifest": "/mnt/e/AI/khanh/src/Unit2Wav/processed_data/target/valid.manifest",
+    "checkpoint_dir": "/mnt/e/AI/khanh/checkpoints/duration_predictor",
+
+    "model_type": "conv_transformer",
+    "vocab_size": 500,
+    "embedding_dim": 256,
+    "conv_channels": 256,
+    "conv_layers": 3,
+    "kernel_size": 5,
+    "n_transformer_layers": 4,
+    "n_heads": 4,
+    "ffn_dim": 1024,
+    "dropout": 0.1,
+
+    "batch_size": 32,
+    "learning_rate": 5e-4,
+    "warmup_epochs": 5,
+    "num_epochs": 150,
+    "num_workers": 2,
+
+    "loss_type": "huber",
+    "huber_delta": 1.0,
+    "dur_weight_threshold": 3,
+    "dur_weight_scale": 2.0,
+
+    "use_ema": true,
+    "ema_decay": 0.999,
+
+    "code_hop_size": 320,
+    "sampling_rate": 16000,
+    "log_interval": 100,
+    "save_interval": 10,
+    "seed": 1234
+}

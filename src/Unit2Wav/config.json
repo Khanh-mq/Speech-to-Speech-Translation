@@ -35,7 +35,7 @@
         "world_size": 1
     },
 
-    "num_embeddings": 1000,
+    "num_embeddings": 512,
     "embedding_dim": 512,
     "code_hop_size": 320,
     

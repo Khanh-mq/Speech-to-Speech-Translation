@@ -5,7 +5,7 @@ import datetime
 
 # --- CẤU HÌNH ĐƯỜNG DẪN ---
 BASE_TARGET = '/mnt/e/AI/khanh/checkpoints'
-DATA_BIN = os.path.join(BASE_TARGET, "data_bin_unit2unit")
+DATA_BIN = os.path.join(BASE_TARGET, "data_bin_unit2unit_dedup")
 CHECKPOINT_DIR = os.path.join(BASE_TARGET, "unit2unit_from_scratch_BIG") # Đổi tên thư mục để dễ quản lý
 
 def start_training_from_scratch_optimized():
@@ -35,11 +35,11 @@ def start_training_from_scratch_optimized():
         "--optimizer", "adam",
         "--adam-betas", "(0.9, 0.98)",
         "--adam-eps", "1e-8",
-        "--clip-norm", "1.0",
+        "--clip-norm", "0.1",
         
         
         "--lr", "5e-4",
-        "--warmup-updates", "4000",
+        "--warmup-updates", "8000",
         "--lr-scheduler", "inverse_sqrt",
         
         # NỚI LỎNG CÁC RÀNG BUỘC ĐỂ MÔ HÌNH HỌC VÀO

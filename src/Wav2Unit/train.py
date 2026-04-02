@@ -12,10 +12,12 @@ BASE_ROOT =  '/mnt/e/AI/khanh'
 
 
 
+kmean =  500
+
 # Model checkpoints
 HUBERT_CKPT = os.path.join(BASE_ROOT, "checkpoints/mhubert_base_vp_en_es_fr_it3.pt")
 EN_KMEANS_MODEL = os.path.join(BASE_ROOT, "checkpoints/mhubert_base_vp_en_es_fr_it3_L11_km1000.bin")
-VN_KMEANS_MODEL = os.path.join(BASE_ROOT, "kmeans/kmeans_vn_1000.bin")
+VN_KMEANS_MODEL = os.path.join(BASE_ROOT, f"kmeans/kmeans_vn_{kmean}.bin")
 
 def generate_manifest(mode ,  target_split):
     """ Tạo file .tsv từ các file .wav """
@@ -75,7 +77,7 @@ def run_kmeans_training():
     
     cmd = [
         "python", os.path.join(FAIRSEQ_DIR, "examples/hubert/simple_kmeans/learn_kmeans.py"),
-        feat_dir, "train", "1", VN_KMEANS_MODEL, "1000", "--percent", "0.1"
+        feat_dir, "train", "1", VN_KMEANS_MODEL, f'{kmean}', "--percent", "0.1"
     ]
     subprocess.run(cmd, check=True)
     print(f"--- Done K-means: Model saved at {VN_KMEANS_MODEL} ---")
@@ -85,17 +87,25 @@ def quantize(mode ,  target_split):
     print(f"\n>>> Quantization (Tạo Unit IDs) cho {mode}...")
     
     feat_dir = os.path.join(BASE_TARGET, "hubert_feats", "en" if mode == "source" else "vn")
-    km_model = EN_KMEANS_MODEL if mode == "source" else VN_KMEANS_MODEL
+    # km_model = EN_KMEANS_MODEL if mode == "source" else VN_KMEANS_MODEL
     
+    if mode ==  'source':
+        km_model =  EN_KMEANS_MODEL 
+        out_dir =  os.path.join(BASE_TARGET , 'kmean_1000')
+    else :
+        km_model =  VN_KMEANS_MODEL
+        out_dir =  os.path.join(BASE_TARGET  , f'kmean{kmean}')
+    os.makedirs(out_dir, exist_ok=True)
+
     splits = ['train' , 'valid' , 'test'] if target_split == 'all' else [target_split]
  
     for split in splits:
         cmd = [
             "python", os.path.join(FAIRSEQ_DIR, "examples/hubert/simple_kmeans/dump_km_label.py"),
-            feat_dir, split, km_model, "1", "0", feat_dir
+            feat_dir, split, km_model, "1", "0", out_dir
         ]
         subprocess.run(cmd, check=True)
-    print(f"--- Done Quantize: Files .km generated in {feat_dir} ---")
+    print(f"--- Done Quantize: Files .km generated in {out_dir} ---")
 
 
 if __name__ == "__main__":

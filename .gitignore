@@ -1,8 +1,11 @@
 ai310_env/
 fairseq/
 final/
+data/
 checkpoints/vocoder_target/
 checkpoints/vocoder_source/
+checkpoints/vocoder_source_kmean500/
+checkpoints/vocoder_target_kmean500/
 speech-resynthesis/
 temp_pipeline_s2u/
 test_output_results/
@@ -11,4 +14,5 @@ __pycache__/
 *.ckpt
 .env
 *.wav
+Unit2Wav_v1/
 

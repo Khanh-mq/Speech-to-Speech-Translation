@@ -1,0 +1,132 @@
+2026-03-17 15:31:09,693 [INFO] Bắt đầu huấn luyện FastSpeech2 Unit2Mel... Device: cuda
+2026-03-17 15:31:09,693 [INFO] Train size: 73061, Val size: 3846
+2026-03-18 01:56:53,557 [INFO] Bắt đầu huấn luyện FastSpeech2 Unit2Mel... Device: cuda
+2026-03-18 01:56:53,557 [INFO] Train size: 73061, Val size: 3846
+2026-03-18 02:31:01,818 [INFO] Bắt đầu huấn luyện FastSpeech2 Unit2Mel... Device: cuda
+2026-03-18 02:31:01,818 [INFO] Train size: 73061, Val size: 3846
+2026-03-18 13:31:56,814 [INFO] Bắt đầu huấn luyện FastSpeech2 Unit2Mel... Device: cuda
+2026-03-18 13:31:56,814 [INFO] Train size: 73061, Val size: 3846
+2026-03-19 01:51:56,558 [INFO] Bắt đầu huấn luyện FastSpeech2 Unit2Mel... Device: cuda
+2026-03-19 01:51:56,559 [INFO] Train size: 73061, Val size: 3846
+2026-03-19 01:55:27,934 [INFO] Bắt đầu huấn luyện FastSpeech2 Unit2Mel... Device: cuda
+2026-03-19 01:55:27,934 [INFO] Train size: 73061, Val size: 3846
+2026-03-19 02:09:32,987 [INFO] Bắt đầu huấn luyện FastSpeech2 Unit2Mel... Device: cuda
+2026-03-19 02:09:32,987 [INFO] Train size: 73061, Val size: 3846
+2026-03-19 02:10:11,064 [WARNING] Bỏ qua batch vì Loss=NaN tại step 16
+2026-03-19 02:10:19,973 [WARNING] Bỏ qua batch vì Loss=NaN tại step 23
+2026-03-19 02:10:22,151 [WARNING] Bỏ qua batch vì Loss=NaN tại step 25
+2026-03-19 02:10:25,578 [WARNING] Bỏ qua batch vì Loss=NaN tại step 28
+2026-03-19 02:10:30,569 [WARNING] Bỏ qua batch vì Loss=NaN tại step 31
+2026-03-19 02:10:30,613 [WARNING] Bỏ qua batch vì Loss=NaN tại step 31
+2026-03-19 02:10:34,178 [WARNING] Bỏ qua batch vì Loss=NaN tại step 33
+2026-03-19 02:10:34,393 [WARNING] Bỏ qua batch vì Loss=NaN tại step 33
+2026-03-19 02:10:34,634 [WARNING] Bỏ qua batch vì Loss=NaN tại step 34
+2026-03-19 02:10:37,030 [WARNING] Bỏ qua batch vì Loss=NaN tại step 36
+2026-03-19 02:10:38,503 [WARNING] Bỏ qua batch vì Loss=NaN tại step 37
+2026-03-19 02:10:44,904 [WARNING] Bỏ qua batch vì Loss=NaN tại step 41
+2026-03-19 02:10:45,940 [WARNING] Bỏ qua batch vì Loss=NaN tại step 41
+2026-03-19 02:10:49,675 [WARNING] Bỏ qua batch vì Loss=NaN tại step 44
+2026-03-19 02:10:50,910 [WARNING] Bỏ qua batch vì Loss=NaN tại step 46
+2026-03-19 02:10:50,966 [WARNING] Bỏ qua batch vì Loss=NaN tại step 46
+2026-03-19 02:10:52,576 [WARNING] Bỏ qua batch vì Loss=NaN tại step 47
+2026-03-19 02:10:54,131 [WARNING] Bỏ qua batch vì Loss=NaN tại step 48
+2026-03-19 02:10:54,168 [WARNING] Bỏ qua batch vì Loss=NaN tại step 48
+2026-03-19 02:10:55,723 [WARNING] Bỏ qua batch vì Loss=NaN tại step 49
+2026-03-19 02:10:57,675 [WARNING] Bỏ qua batch vì Loss=NaN tại step 50
+2026-03-19 02:10:58,226 [WARNING] Bỏ qua batch vì Loss=NaN tại step 50
+2026-03-19 02:10:58,743 [WARNING] Bỏ qua batch vì Loss=NaN tại step 51
+2026-03-26 10:19:02,650 [INFO] Model params: 34.68M  |  Device: cuda
+2026-03-26 10:19:02,650 [INFO] Train: 72772  |  Val: 3831
+2026-03-26 10:19:02,650 [INFO] Start epoch: 1  |  Step: 0
+2026-03-26 10:32:52,792 [INFO] Model params: 34.68M  |  Device: cuda
+2026-03-26 10:32:52,792 [INFO] Train: 72772  |  Val: 3831
+2026-03-26 10:32:52,792 [INFO] Start epoch: 1  |  Step: 0
+2026-03-26 10:46:37,729 [INFO] Model params: 34.68M  |  Device: cuda
+2026-03-26 10:46:37,729 [INFO] Train: 72772  |  Val: 3831
+2026-03-26 10:46:37,729 [INFO] Start epoch: 1  |  Step: 0
+2026-03-26 11:40:20,070 [INFO] Epoch    1 | Train: 7055.2301 | Val: 621.2750 | Step: 2274
+2026-03-26 11:40:21,624 [INFO] ★ Best model: val_loss=621.2750 → /mnt/e/AI/khanh/checkpoints/Unit2Mel/fs2_best.pt
+2026-03-26 12:31:39,458 [INFO] Epoch    2 | Train: 592.7025 | Val: 562.5969 | Step: 4548
+2026-03-26 12:31:41,067 [INFO] ★ Best model: val_loss=562.5969 → /mnt/e/AI/khanh/checkpoints/Unit2Mel/fs2_best.pt
+2026-03-26 13:23:24,622 [INFO] Epoch    3 | Train: 535.5573 | Val: 510.9160 | Step: 6822
+2026-03-26 13:23:26,306 [INFO] ★ Best model: val_loss=510.9160 → /mnt/e/AI/khanh/checkpoints/Unit2Mel/fs2_best.pt
+2026-03-27 03:34:11,271 [INFO] Model params: 34.68M  |  Device: cuda
+2026-03-27 03:34:11,271 [INFO] Train: 72772  |  Val: 3831
+2026-03-27 03:34:11,272 [INFO] Start epoch: 1  |  Step: 0
+2026-03-27 04:24:14,401 [INFO] Epoch    1 | Train: 7076.0811 | Val: 611.8298 | Step: 2274
+2026-03-27 04:24:16,002 [INFO] ★ Best model: val_loss=611.8298 → /mnt/e/AI/khanh/checkpoints/Unit2Mel/fs2_best.pt
+2026-03-27 05:10:35,837 [INFO] Epoch    2 | Train: 594.2314 | Val: 553.7689 | Step: 4548
+2026-03-27 05:10:37,432 [INFO] ★ Best model: val_loss=553.7689 → /mnt/e/AI/khanh/checkpoints/Unit2Mel/fs2_best.pt
+2026-03-27 05:57:25,935 [INFO] Epoch    3 | Train: 538.8103 | Val: 508.7853 | Step: 6822
+2026-03-27 05:57:27,495 [INFO] ★ Best model: val_loss=508.7853 → /mnt/e/AI/khanh/checkpoints/Unit2Mel/fs2_best.pt
+2026-03-27 06:44:25,027 [INFO] Epoch    4 | Train: 503.0607 | Val: 492.2247 | Step: 9096
+2026-03-27 06:44:26,544 [INFO] ★ Best model: val_loss=492.2247 → /mnt/e/AI/khanh/checkpoints/Unit2Mel/fs2_best.pt
+2026-03-27 07:31:38,784 [INFO] Epoch    5 | Train: 479.9038 | Val: 472.2388 | Step: 11370
+2026-03-27 07:31:40,431 [INFO] ★ Best model: val_loss=472.2388 → /mnt/e/AI/khanh/checkpoints/Unit2Mel/fs2_best.pt
+2026-03-27 08:18:51,526 [INFO] Epoch    6 | Train: 462.6489 | Val: 464.5483 | Step: 13644
+2026-03-27 08:18:53,095 [INFO] ★ Best model: val_loss=464.5483 → /mnt/e/AI/khanh/checkpoints/Unit2Mel/fs2_best.pt
+2026-03-27 09:10:28,741 [INFO] Epoch    7 | Train: 448.8831 | Val: 456.9936 | Step: 15918
+2026-03-27 09:10:30,534 [INFO] ★ Best model: val_loss=456.9936 → /mnt/e/AI/khanh/checkpoints/Unit2Mel/fs2_best.pt
+2026-03-27 10:06:32,046 [INFO] Epoch    8 | Train: 436.4094 | Val: 457.0437 | Step: 18192
+2026-03-27 10:55:39,429 [INFO] Epoch    9 | Train: 426.0134 | Val: 448.9447 | Step: 20466
+2026-03-27 10:55:40,953 [INFO] ★ Best model: val_loss=448.9447 → /mnt/e/AI/khanh/checkpoints/Unit2Mel/fs2_best.pt
+2026-03-27 11:43:40,675 [INFO] Epoch   10 | Train: 414.9097 | Val: 446.8435 | Step: 22740
+2026-03-27 11:43:42,142 [INFO] Saved: /mnt/e/AI/khanh/checkpoints/Unit2Mel/fs2_epoch_0010.pt
+2026-03-27 11:43:43,685 [INFO] ★ Best model: val_loss=446.8435 → /mnt/e/AI/khanh/checkpoints/Unit2Mel/fs2_best.pt
+2026-03-27 12:31:59,943 [INFO] Epoch   11 | Train: 405.9500 | Val: 443.9541 | Step: 25014
+2026-03-27 12:32:01,484 [INFO] ★ Best model: val_loss=443.9541 → /mnt/e/AI/khanh/checkpoints/Unit2Mel/fs2_best.pt
+2026-03-27 13:20:29,298 [INFO] Epoch   12 | Train: 395.9594 | Val: 446.3274 | Step: 27288
+2026-03-27 14:10:47,215 [INFO] Epoch   13 | Train: 385.8016 | Val: 445.1426 | Step: 29562
+2026-03-27 15:04:06,236 [INFO] Epoch   14 | Train: 377.2576 | Val: 450.6577 | Step: 31836
+2026-03-29 03:35:12,460 [INFO] Resumed from: /mnt/e/AI/khanh/checkpoints/Unit2Mel/fs2_epoch_0010.pt  (epoch 10, step 22740)
+2026-03-29 03:35:12,460 [INFO] Model params: 34.68M  |  Device: cuda
+2026-03-29 03:35:12,460 [INFO] Train: 72772  |  Val: 3831
+2026-03-29 03:35:12,461 [INFO] Start epoch: 11  |  Step: 22740
+2026-03-29 12:46:12,134 [INFO] Resumed from: /mnt/e/AI/khanh/checkpoints/Unit2Mel/fs2_epoch_0010.pt  (epoch 10, step 22740)
+2026-03-29 12:46:12,135 [INFO] Model params: 34.68M  |  Device: cuda
+2026-03-29 12:46:12,135 [INFO] Train: 72772  |  Val: 3831
+2026-03-29 12:46:12,135 [INFO] Start epoch: 11  |  Step: 22740
+2026-03-29 13:35:51,960 [INFO] Epoch   11 | Train: 405.6558 | Val: 445.0292 | Step: 25014
+2026-03-29 13:35:54,125 [INFO] ★ Best model: val_loss=445.0292 → /mnt/e/AI/khanh/checkpoints/Unit2Mel/fs2_best.pt
+2026-03-29 14:25:32,479 [INFO] Epoch   12 | Train: 395.2803 | Val: 444.9308 | Step: 27288
+2026-03-29 14:25:35,116 [INFO] ★ Best model: val_loss=444.9308 → /mnt/e/AI/khanh/checkpoints/Unit2Mel/fs2_best.pt
+2026-03-29 15:15:24,658 [INFO] Epoch   13 | Train: 386.2409 | Val: 447.8454 | Step: 29562
+2026-03-30 00:30:58,760 [INFO] Resumed from: /mnt/e/AI/khanh/checkpoints/Unit2Mel/fs2_epoch_0010.pt  (epoch 10, step 22740)
+2026-03-30 00:30:58,761 [INFO] Model params: 34.68M  |  Device: cuda
+2026-03-30 00:30:58,761 [INFO] Train: 72772  |  Val: 3831
+2026-03-30 00:30:58,762 [INFO] Start epoch: 11  |  Step: 22740
+2026-03-30 01:21:02,250 [INFO] Epoch   11 | Train: 404.8646 | Val: 445.1269 | Step: 25014
+2026-03-30 01:21:04,692 [INFO] ★ Best model: val_loss=445.1269 → /mnt/e/AI/khanh/checkpoints/Unit2Mel/fs2_best.pt
+2026-03-30 02:18:11,321 [INFO] Epoch   12 | Train: 395.4799 | Val: 450.2040 | Step: 27288
+2026-03-30 03:08:03,757 [INFO] Epoch   13 | Train: 386.4292 | Val: 446.9116 | Step: 29562
+2026-03-30 04:22:34,696 [INFO] Epoch   14 | Train: 377.5367 | Val: 447.2599 | Step: 31836
+2026-03-30 05:12:18,433 [INFO] Epoch   15 | Train: 368.9704 | Val: 447.8809 | Step: 34110
+2026-03-30 06:01:52,063 [INFO] Epoch   16 | Train: 359.8155 | Val: 451.9848 | Step: 36384
+2026-03-30 06:51:56,946 [INFO] Epoch   17 | Train: 351.6082 | Val: 449.9763 | Step: 38658
+2026-03-30 07:41:57,640 [INFO] Epoch   18 | Train: 343.8681 | Val: 461.6417 | Step: 40932
+2026-03-30 08:32:22,223 [INFO] Epoch   19 | Train: 335.0876 | Val: 459.6465 | Step: 43206
+2026-03-30 09:22:34,825 [INFO] Epoch   20 | Train: 328.1179 | Val: 456.4953 | Step: 45480
+2026-03-30 09:22:37,251 [INFO] Saved: /mnt/e/AI/khanh/checkpoints/Unit2Mel/fs2_epoch_0020.pt
+2026-03-30 10:12:39,294 [INFO] Epoch   21 | Train: 320.2287 | Val: 461.5755 | Step: 47754
+2026-03-30 11:02:10,743 [INFO] Epoch   22 | Train: 312.8003 | Val: 469.5049 | Step: 50028
+2026-03-30 11:51:51,299 [INFO] Epoch   23 | Train: 306.2512 | Val: 469.9479 | Step: 52302
+2026-03-30 12:41:55,075 [INFO] Epoch   24 | Train: 299.6398 | Val: 461.5764 | Step: 54576
+2026-03-31 02:09:44,725 [INFO] Resumed from: /mnt/e/AI/khanh/checkpoints/Unit2Mel/fs2_epoch_0020.pt  (epoch 20, step 45480)
+2026-03-31 02:09:44,726 [INFO] Model params: 34.68M  |  Device: cuda
+2026-03-31 02:09:44,726 [INFO] Train: 72772  |  Val: 3831
+2026-03-31 02:09:44,727 [INFO] Start epoch: 21  |  Step: 45480
+2026-03-31 03:00:47,386 [INFO] Epoch   21 | Train: 319.9197 | Val: 461.6075 | Step: 47754
+2026-03-31 03:00:49,822 [INFO] ★ Best model: val_loss=461.6075 → /mnt/e/AI/khanh/checkpoints/Unit2Mel/fs2_best.pt
+2026-03-31 03:50:26,088 [INFO] Epoch   22 | Train: 312.9172 | Val: 464.1386 | Step: 50028
+2026-03-31 04:40:25,873 [INFO] Epoch   23 | Train: 306.4233 | Val: 466.9047 | Step: 52302
+2026-03-31 05:28:24,647 [INFO] Epoch   24 | Train: 299.7472 | Val: 464.6690 | Step: 54576
+2026-03-31 06:15:58,248 [INFO] Epoch   25 | Train: 293.5492 | Val: 464.5323 | Step: 56850
+2026-03-31 07:04:19,585 [INFO] Epoch   26 | Train: 287.2399 | Val: 471.9781 | Step: 59124
+2026-03-31 07:53:13,970 [INFO] Epoch   27 | Train: 282.0201 | Val: 464.2498 | Step: 61398
+2026-03-31 08:42:38,021 [INFO] Epoch   28 | Train: 276.7884 | Val: 474.3587 | Step: 63672
+2026-03-31 09:32:14,883 [INFO] Epoch   29 | Train: 271.4577 | Val: 473.0766 | Step: 65946
+2026-03-31 10:20:02,222 [INFO] Epoch   30 | Train: 266.1772 | Val: 473.4813 | Step: 68220
+2026-03-31 10:20:04,425 [INFO] Saved: /mnt/e/AI/khanh/checkpoints/Unit2Mel/fs2_epoch_0030.pt
+2026-03-31 11:09:37,182 [INFO] Epoch   31 | Train: 261.5148 | Val: 481.7306 | Step: 70494
+2026-03-31 11:57:11,740 [INFO] Epoch   32 | Train: 256.9366 | Val: 473.2398 | Step: 72768
+2026-03-31 12:46:11,428 [INFO] Epoch   33 | Train: 252.7366 | Val: 480.3990 | Step: 75042

@@ -10,7 +10,7 @@ OUTPUT_BASE_DIR = os.path.join(BASE_DIR, "src/Unit2Wav/processed_data")
 DATASETS = {
     "target": { # Tiếng Việt
         "tsv": '/mnt/g/khanh/manifest_temp/target/train.tsv',
-        "km": '/mnt/g/khanh/hubert_feats/vn/train_0_1.km',
+        "km": '/mnt/g/khanh/kmean500/train_0_1.km',
         "wav_root": "/mnt/g/data_final/data/target/train", 
     },
     "source": { # Tiếng Anh 
@@ -61,8 +61,8 @@ def process_dataset(lang):
     random.seed(42) 
     random.shuffle(merged_data)
 
-    train_set = merged_data[:30000]
-    val_set = merged_data[30000:31000]
+    train_set = merged_data[:50000]
+    val_set = merged_data[50000:52000]
 
     # 3. Hàm ghi file chuẩn Dictionary
     def write_fairseq_manifest(data_list, output_filename):

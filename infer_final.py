@@ -14,7 +14,7 @@ KM_MODEL_SOURCE = os.path.join(BASE_DIR, "checkpoints/mhubert_base_vp_en_es_fr_i
 
 # 2. Cấu hình Translation (Unit-to-Unit)
 DATA_BIN_U2U = os.path.join(BASE_DIR, "checkpoints", "data_bin_unit2unit")
-MODEL_U2U_PATH = os.path.join(BASE_DIR, "checkpoints/unit2unit/checkpoint_best.pt")
+MODEL_U2U_PATH = os.path.join(BASE_DIR, "checkpoints/unit2unit/checkpoint.best_loss_2.8144.pt")
 
 # 3. Cấu hình Vocoder (Target: Tiếng Việt)
 VOCODER_CKPT = os.path.join(BASE_DIR, 'checkpoints/vocoder_target/g_00027000')
@@ -157,7 +157,7 @@ def run_pipeline(input_wav, output_wav):
 
 if __name__ == "__main__":
     # FILE ĐẦU VÀO (Tiếng Anh)
-    IN_WAV = "/mnt/e/AI/khanh/sentence_000012.wav" 
+    IN_WAV = "/mnt/e/AI/khanh/sentence_000001.wav" 
     
     # FILE ĐẦU RA (Tiếng Việt)
     OUT_WAV = "/mnt/e/AI/khanh/output_result_vi.wav"
