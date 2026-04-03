@@ -15,4 +15,7 @@ __pycache__/
 .env
 *.wav
 Unit2Wav_v1/
+abx_test_sample/
+abx_test_sample_500/
+
 

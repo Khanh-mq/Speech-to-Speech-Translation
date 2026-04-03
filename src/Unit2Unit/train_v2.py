@@ -6,30 +6,33 @@ import datetime
 # --- CẤU HÌNH ĐƯỜNG DẪN ---
 BASE_TARGET = '/mnt/e/AI/khanh/checkpoints'
 DATA_BIN = os.path.join(BASE_TARGET, "data_bin_unit2unit_dedup")
-CHECKPOINT_DIR = os.path.join(BASE_TARGET, "unit2unit_from_scratch_BIG") # Đổi tên thư mục để dễ quản lý
+CHECKPOINT_DIR = os.path.join(BASE_TARGET, "unit2unit_dedup_v2")
 
 def start_training_from_scratch_optimized():
     os.makedirs(CHECKPOINT_DIR, exist_ok=True)
 
-    print(f"Chuẩn bị Training Unit2Unit từ đầu (Nâng cấp Transformer BIG).")
+    print(f"Chuẩn bị Training Unit2Unit từ đầu (Nâng cấp).")
     print(f"Checkpoints lưu tại: {CHECKPOINT_DIR}")
 
     cmd = [
         "fairseq-train", DATA_BIN,
         "--task", "translation",
-        
-        # NÂNG CẤP LÊN BẢN TRANSFORMER BIG
-        "--arch", "transformer_wmt_en_de_big", 
-        
+        "--arch", "transformer", 
         "--share-decoder-input-output-embed",
+        
+        # 1. FIX LỖI TRÀN RAM HỆ THỐNG (BẮT BUỘC)
+        "--num-workers", "0",
         
         # --- CẤU HÌNH INPUT ---
         "--max-source-positions", "1536",
         "--max-target-positions", "1536",
         "--skip-invalid-size-inputs-valid-test",
         
-        "--max-tokens", "1536",    
-        "--update-freq", "16",     
+        # 2. TỐI ƯU CHO RTX 3090 (TÙY CHỌN NHƯNG KHUYÊN DÙNG)
+        # Tăng max-tokens để tận dụng 24GB VRAM, giảm update-freq để giữ nguyên Effective Batch Size
+        "--max-tokens", "4096",    # Cũ: 1536
+        "--update-freq", "6",      # Cũ: 16 (4096 * 6 ~ 24,576 tokens/update)
+        
         "--fp16", 
         
         "--optimizer", "adam",
@@ -37,9 +40,12 @@ def start_training_from_scratch_optimized():
         "--adam-eps", "1e-8",
         "--clip-norm", "0.1",
         
-        
         "--lr", "5e-4",
-        "--warmup-updates", "8000",
+        
+        # 3. GIẢM WARMUP ĐỂ MODEL HỘI TỤ NHANH HƠN (TÙY CHỌN)
+        # 4000 updates ~ 4 epochs đầu tiên thay vì 8.5 epochs như cũ
+        "--warmup-updates", "4000", # Cũ: 8000
+        
         "--lr-scheduler", "inverse_sqrt",
         
         # NỚI LỎNG CÁC RÀNG BUỘC ĐỂ MÔ HÌNH HỌC VÀO
